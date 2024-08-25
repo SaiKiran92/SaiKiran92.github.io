@@ -1,3 +1,16 @@
-title: My Website
-url: "https://saikiran92.github.io"
+title: "Sai Kiran Mayakuntla"
+description: "My website and blog"
 theme: jekyll-theme-merlot
+baseurl: "" # Leave this empty unless your site is in a subdirectory
+url: "https://saikiran92.github.io" # Update this with your GitHub Pages URL
+
+# Navigation links
+header_pages:
+  - index.md
+  - blog.md
+  - projects.md
+
+# Social media links
+social:
+  github: https://github.com/your-github-username
+  linkedin: https://www.linkedin.com/in/your-linkedin-username/
