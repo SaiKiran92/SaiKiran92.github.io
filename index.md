@@ -1,7 +1,7 @@
 ---
-layout: home
-title: Home
-permalink: /
+layout: index
+title: Index
+permalink: /index/
 ---
 
 Welcome to my personal website!
