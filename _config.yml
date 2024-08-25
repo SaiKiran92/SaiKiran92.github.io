@@ -14,3 +14,14 @@ header_pages:
 social:
   github: https://github.com/saikiran92
   linkedin: https://www.linkedin.com/in/saikiranm92
+
+# Custom styles
+sass:
+  style: compressed
+
+plugins:
+  - jekyll-sass-converter
+
+# Include the custom CSS file
+include:
+  - assets/css/custom.css
