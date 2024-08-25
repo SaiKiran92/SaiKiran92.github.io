@@ -15,7 +15,10 @@ social:
   github: https://github.com/saikiran92
   linkedin: https://www.linkedin.com/in/saikiranm92
 
-<a href="{{ site.custom.homepage_url }}" target="_blank">Visit My Homepage</a>
+# Custom variables
+custom:
+  github_url: "https://github.com/saikiran92"
+  linkedin_url: "https://linkedin.com/in/saikiranm92"
 
 # Custom styles
 sass:
