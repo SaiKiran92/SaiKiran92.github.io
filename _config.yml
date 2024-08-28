@@ -4,6 +4,12 @@ theme: jekyll-theme-merlot
 baseurl: "" # Leave this empty unless your site is in a subdirectory
 url: "https://saikiran92.github.io" # Update this with your GitHub Pages URL
 
+nav:
+  - home: /
+  - blog: /blog/
+  - projects: /projects/
+  - about: /about/
+
 # Social media links
 social:
   github: https://github.com/saikiran92
