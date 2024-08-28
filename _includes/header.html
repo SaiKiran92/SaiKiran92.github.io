@@ -1,8 +1,16 @@
 <header>
-  <ul>
-    <li><a href="https://github.com/saikiran92" target="_blank">GitHub</a></li>
-    <li><a href="https://www.linkedin.com/in/saikiranm92/" target="_blank">LinkedIn</a></li>
-  </ul>
+  <div class="ribbon-outer">
+    <div class="ribbon-inner">
+      <h1>{{ site.title | default: site.github.repository_name }}</h1>
+      <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+    </div>
+    <ul>
+      <li><a href="https://github.com/saikiran92" target="_blank">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/saikiranm92/" target="_blank">LinkedIn</a></li>
+    </ul>
+    <span class="left-tail"></span>
+    <span class="right-tail"></span>
+  </div>
 </header>
 
 <a href="https://github.com/saikiran92" target="_blank">
