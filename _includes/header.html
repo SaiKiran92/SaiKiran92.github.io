@@ -11,6 +11,20 @@
     <span class="left-tail"></span>
     <span class="right-tail"></span>
   </div>
+
+  {% if site.data.navigation %}
+    <nav class="nav">
+      <ul class="nav-list">
+        {% for item in site.data.navigation %}
+          <li class="nav-item">
+            <a href="{{ item.url | relative_url }}" class="{% if page.url == item.url %}current{% endif %}">
+              {{ item.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
 </header>
 
 <a href="https://github.com/saikiran92" target="_blank">
