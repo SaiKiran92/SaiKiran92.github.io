@@ -1,6 +1,8 @@
 title: "Sai Kiran Mayakuntla"
 description: "Finance Professional. Puzzle Enthusiast. Avid Reader."
-theme: jekyll-theme-merlot
+remote_theme: pages-themes/merlot@v0.2.0
+plugins:
+- jekyll-remote-theme
 baseurl: "" # Leave this empty unless your site is in a subdirectory
 url: "https://saikiran92.github.io" # Update this with your GitHub Pages URL
 
