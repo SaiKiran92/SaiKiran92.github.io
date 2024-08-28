@@ -13,6 +13,7 @@
   </div>
 
   {% if site.data.navigation %}
+    <span class="inner">
     <nav class="nav">
       <ul class="nav-list">
         {% for item in site.data.navigation %}
@@ -24,6 +25,7 @@
         {% endfor %}
       </ul>
     </nav>
+    </span>
   {% endif %}
 </header>
 
