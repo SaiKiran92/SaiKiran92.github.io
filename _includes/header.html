@@ -13,19 +13,19 @@
   </div>
 
     <div class="navbar">
-    <span class="inner">
-    <nav class="nav">
-      <ul class="nav-list">
-        {% for item in site.data.navigation %}
-          <li class="nav-item">
-            <a href="{{ item.url | relative_url }}" class="{% if page.url == item.url %}current{% endif %}">
-              {{ item.title }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
-    </span>
+      <span class="inner">
+        <nav class="nav">
+          <ul class="nav-list">
+            {% for item in site.data.navigation %}
+              <li class="nav-item">
+                <a href="{{ item.url | relative_url }}" class="{% if page.url == item.url %}current{% endif %}">
+                  {{ item.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </span>
     </div>
 </header>
 
