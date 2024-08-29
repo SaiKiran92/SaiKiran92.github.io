@@ -1,0 +1,12 @@
+baseURL = "https://saikiran92.github.io/"
+languageCode = "en-us"
+title = "Sai Kiran Mayakuntla"
+theme = "custom"
+
+[params]
+  description = "Finance Professional. Puzzle Enthusiast. Avid Reader"
+  github = "https://github.com/saikiran92"
+  linkedin = "https://linkedin.com/in/saikiranm92"
+
+[outputs]
+  home = ["HTML", "JSON"]

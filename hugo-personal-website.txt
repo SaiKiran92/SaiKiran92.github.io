@@ -1,0 +1,270 @@
+project-root/
+├── config.toml
+├── content/
+│   ├── _index.md
+│   ├── blog/
+│   │   ├── _index.md
+│   │   └── post1.md
+│   ├── projects/
+│   │   └── _index.md
+│   └── bookshelf/
+│       ├── _index.md
+│       └── book1.md
+├── layouts/
+│   ├── _default/
+│   │   ├── baseof.html
+│   │   └── single.html
+│   ├── index.html
+│   ├── partials/
+│   │   ├── header.html
+│   │   ├── footer.html
+│   │   └── search.html
+│   ├── blog/
+│   │   └── single.html
+│   └── bookshelf/
+│       └── single.html
+├── static/
+│   ├── css/
+│   │   └── main.css
+│   ├── js/
+│   │   └── search.js
+│   └── images/
+│       └── book-covers/
+└── archetypes/
+    ├── default.md
+    ├── blog.md
+    └── book.md
+
+# config.toml
+baseURL = "http://example.com"
+languageCode = "en-us"
+title = "Your Name's Personal Website"
+theme = "custom"
+
+[params]
+  description = "Finance Professional, Puzzle Enthusiast, and Avid Reader"
+  github = "https://github.com/yourusername"
+  linkedin = "https://linkedin.com/in/yourusername"
+
+[outputs]
+  home = ["HTML", "JSON"]
+
+# layouts/_default/baseof.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</head>
+<body>
+    {{ partial "header.html" . }}
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+    <script src="/js/search.js"></script>
+</body>
+</html>
+
+# layouts/partials/header.html
+<header>
+    <nav>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog">Blog</a>
+            <a href="/projects">Projects</a>
+            <a href="/bookshelf">Bookshelf</a>
+        </div>
+        <div class="social-links">
+            <a href="{{ .Site.Params.github }}" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="{{ .Site.Params.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </nav>
+    {{ partial "search.html" . }}
+</header>
+
+# layouts/partials/search.html
+<div id="search-container">
+    <input type="text" id="search-input" placeholder="Search...">
+    <ul id="search-results"></ul>
+</div>
+
+# layouts/index.html
+{{ define "main" }}
+<h1>{{ .Site.Title }}</h1>
+<p class="description">{{ .Site.Params.description }}</p>
+<div class="section">
+    <h2>Work Experience</h2>
+    {{ .Content }}
+</div>
+{{ end }}
+
+# layouts/blog/single.html
+{{ define "main" }}
+<article>
+    <h1>{{ .Title }}</h1>
+    <p>Posted on {{ .Date.Format "January 2, 2006" }}</p>
+    <div class="tags">
+        {{ range .Params.tags }}
+        <span class="tag">{{ . }}</span>
+        {{ end }}
+    </div>
+    {{ .Content }}
+    <div class="jupyter-notebook">
+        <!-- Embed Jupyter Notebook here -->
+        <iframe src="{{ .Params.notebook_url }}" width="100%" height="600px"></iframe>
+    </div>
+</article>
+{{ end }}
+
+# layouts/bookshelf/single.html
+{{ define "main" }}
+<div class="book">
+    <img src="/images/book-covers/{{ .Params.cover }}" alt="{{ .Title }} cover">
+    <h2>{{ .Title }}</h2>
+    <p>By {{ .Params.author }}</p>
+    <div class="tags">
+        {{ range .Params.tags }}
+        <span class="tag">{{ . }}</span>
+        {{ end }}
+    </div>
+    {{ .Content }}
+</div>
+{{ end }}
+
+# static/js/search.js
+document.addEventListener('DOMContentLoaded', (event) => {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        if (query.length < 2) {
+            searchResults.innerHTML = '';
+            return;
+        }
+
+        fetch('/index.json')
+            .then(response => response.json())
+            .then(data => {
+                const results = data.filter(item => 
+                    item.title.toLowerCase().includes(query) || 
+                    item.tags.some(tag => tag.toLowerCase().includes(query))
+                );
+                displayResults(results);
+            });
+    });
+
+    function displayResults(results) {
+        searchResults.innerHTML = '';
+        results.forEach(item => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = item.permalink;
+            a.textContent = item.title;
+            li.appendChild(a);
+            searchResults.appendChild(li);
+        });
+    }
+});
+
+# archetypes/blog.md
+---
+title: "{{ replace .Name "-" " " | title }}"
+date: {{ .Date }}
+draft: true
+tags: []
+notebook_url: ""
+---
+
+# content/blog/post1.md
+---
+title: "My First Blog Post"
+date: 2023-08-29T10:00:00-00:00
+draft: false
+tags: ["finance", "data analysis"]
+notebook_url: "/notebooks/first-post.html"
+---
+
+This is the content of my first blog post. The Jupyter notebook is embedded below.
+
+# content/bookshelf/book1.md
+---
+title: "The Intelligent Investor"
+author: "Benjamin Graham"
+date: 2023-08-29T10:00:00-00:00
+draft: false
+tags: ["finance", "investing"]
+cover: "intelligent-investor.jpg"
+---
+
+My thoughts on "The Intelligent Investor" by Benjamin Graham...
+
+# static/css/main.css
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-links, .social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a, .social-links a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.tag {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin-right: 5px;
+}
+
+.book {
+    display: inline-block;
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+}
+
+.book img {
+    max-width: 100%;
+    height: auto;
+}

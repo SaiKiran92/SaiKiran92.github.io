@@ -1,0 +1,13 @@
+{{ define "main" }}
+<div class="book">
+    <img src="/images/book-covers/{{ .Params.cover }}" alt="{{ .Title }} cover">
+    <h2>{{ .Title }}</h2>
+    <p>By {{ .Params.author }}</p>
+    <div class="tags">
+        {{ range .Params.tags }}
+        <span class="tag">{{ . }}</span>
+        {{ end }}
+    </div>
+    {{ .Content }}
+</div>
+{{ end }}
