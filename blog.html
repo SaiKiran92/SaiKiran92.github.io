@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Kiran Mayakuntla - Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="bookshelf.html">Bookshelf</a>
+        </div>
+        <div class="social-links">
+            <a href="https://github.com/SaiKiran92" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/saikiranm92" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </nav>
+    <div class="content">
+        <h1>Blog Posts</h1>
+        <div id="tag-filter">
+            <label for="tag-select">Filter by tag:</label>
+            <select id="tag-select">
+                <option value="">All tags</option>
+                <option value="finance">Finance</option>
+                <option value="puzzles">Puzzles</option>
+                <option value="books">Books</option>
+                <option value="technology">Technology</option>
+            </select>
+        </div>
+        <div class="pagination">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">...</a>
+            <a href="#">10</a>
+        </div>
+        <div id="blog-posts">
+            <div class="blog-post" data-tags="finance,books">
+                <h2>The Intersection of Finance and Literature</h2>
+                <p>Posted on August 1, 2023</p>
+                <p>Explore how financial concepts are reflected in classic literature, from Dickens to modern authors...</p>
+                <div class="tags">
+                    <span class="tag">finance</span>
+                    <span class="tag">books</span>
+                </div>
+            </div>
+            <div class="blog-post" data-tags="puzzles,technology">
+                <h2>Solving the Rubik's Cube: A Step-by-Step Guide</h2>
+                <p>Posted on July 15, 2023</p>
+                <p>Learn how to solve a Rubik's Cube with this comprehensive guide, including tips on finger tricks and speed solving...</p>
+                <div class="tags">
+                    <span class="tag">puzzles</span>
+                    <span class="tag">technology</span>
+                </div>
+            </div>
+            <div class="blog-post" data-tags="finance,technology">
+                <h2>The Rise of Fintech: Revolutionizing Personal Finance</h2>
+                <p>Posted on June 22, 2023</p>
+                <p>Discover how financial technology is changing the way we manage our money, from mobile banking to robo-advisors...</p>
+                <div class="tags">
+                    <span class="tag">finance</span>
+                    <span class="tag">technology</span>
+                </div>
+            </div>
+            <div class="blog-post" data-tags="books,puzzles">
+                <h2>Mind-Bending Puzzle Books: A Curated List</h2>
+                <p>Posted on May 30, 2023</p>
+                <p>Explore a selection of puzzle books that will challenge your mind and provide hours of entertainment...</p>
+                <div class="tags">
+                    <span class="tag">books</span>
+                    <span class="tag">puzzles</span>
+                </div>
+            </div>
+        </div>
+        <div class="pagination">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">...</a>
+            <a href="#">10</a>
+        </div>
+    </div>
+    <div class="timeline-nav">
+        <a href="#2023">2023</a>
+        <a href="#2022">2022</a>
+        <a href="#2021">2021</a>
+        <a href="#2020">2020</a>
+    </div>
+    <script>
+        document.getElementById('tag-select').addEventListener('change', function() {
+            const selectedTag = this.value;
+            const posts = document.getElementsByClassName('blog-post');
+            for (let post of posts) {
+                const tags = post.getAttribute('data-tags').split(',');
+                if (selectedTag === '' || tags.includes(selectedTag)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
