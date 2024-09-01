@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sai Kiran Mayakuntla - Blog</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="common.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="common.js" defer></script>
 </head>
 <body>
     <nav class="navbar">
@@ -31,13 +32,7 @@
                 <option value="technology">Technology</option>
             </select>
         </div>
-        <div class="pagination">
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">...</a>
-            <a href="#">10</a>
-        </div>
+        <div id="pagination" class="pagination"></div>
         <div id="blog-posts">
             <div class="blog-post" data-tags="finance,books">
                 <h2>The Intersection of Finance and Literature</h2>
@@ -76,33 +71,15 @@
                 </div>
             </div>
         </div>
-        <div class="pagination">
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">...</a>
-            <a href="#">10</a>
-        </div>
-    </div>
-    <div class="timeline-nav">
-        <a href="#2023">2023</a>
-        <a href="#2022">2022</a>
-        <a href="#2021">2021</a>
-        <a href="#2020">2020</a>
+        <div id="pagination-bottom" class="pagination"></div>
     </div>
     <script>
-        document.getElementById('tag-select').addEventListener('change', function() {
-            const selectedTag = this.value;
-            const posts = document.getElementsByClassName('blog-post');
-            for (let post of posts) {
-                const tags = post.getAttribute('data-tags').split(',');
-                if (selectedTag === '' || tags.includes(selectedTag)) {
-                    post.style.display = 'block';
-                } else {
-                    post.style.display = 'none';
-                }
-            }
-        });
+        const blogPosts = document.querySelectorAll('.blog-post');
+        const postsPerPage = 2; // You can adjust this number
+
+        createPagination(blogPosts, postsPerPage, 'pagination', 'pagination-bottom');
+        showPage(blogPosts, postsPerPage, 1);
+        setupTagFiltering(blogPosts, 'tag-select', postsPerPage, 'pagination', 'pagination-bottom');
     </script>
 </body>
 </html>

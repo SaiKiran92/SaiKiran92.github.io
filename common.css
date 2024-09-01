@@ -11,7 +11,7 @@ body {
     color: white;
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0.5rem; /* Reduced padding */
 }
 
 .nav-links {
@@ -23,11 +23,16 @@ body {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.2rem; /* Increased font size for navbar items */
 }
 
 .social-links {
     display: flex;
     gap: 1rem;
+}
+
+.social-links a {
+    font-size: 1.5rem; /* Larger icons for GitHub and LinkedIn */
 }
 
 .content {
@@ -96,7 +101,7 @@ h2 {
     margin-bottom: 1rem;
 }
 
-#tag-select {
+#tag-select, #book-tag-select {
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid #722F37;
@@ -126,32 +131,6 @@ h2 {
     margin-top: 0.5rem;
     font-weight: bold;
     color: #722F37;
-}
-
-/* Book tags */
-.book-tags {
-    margin-top: 0.5rem;
-}
-
-.book-tag {
-    background-color: #722F37;
-    color: white;
-    padding: 0.2rem 0.5rem;
-    border-radius: 5px;
-    margin-right: 0.5rem;
-    font-size: 0.8rem;
-    display: inline-block;
-    margin-bottom: 0.3rem;
-}
-
-#book-tag-filter {
-    margin-bottom: 1rem;
-}
-
-#book-tag-select {
-    padding: 0.5rem;
-    border-radius: 5px;
-    border: 1px solid #722F37;
 }
 
 .modal {
@@ -185,4 +164,41 @@ h2 {
 
 .modal-content h2 {
     color: #722F37;
+}
+
+/* Pagination styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.pagination a {
+    color: #722F37;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #722F37;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #722F37;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .highlight {
+        font-size: 1.7rem; /* Keep the same size on mobile */
+    }
+    
+    .nav-links a, .social-links a {
+        font-size: 1.2rem; /* Keep the same size on mobile */
+    }
 }
