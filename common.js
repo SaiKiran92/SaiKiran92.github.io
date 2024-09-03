@@ -108,9 +108,9 @@ function renderBooks(books) {
 
 async function loadBlogPosts() {
     try {
-        const response = await fetch('blog_posts/index.json');
+        const response = await fetch('blog-posts/index.json');
         const postFiles = await response.json();
-        const postPromises = postFiles.map(file => fetch(`blog_posts/${file}`).then(res => res.json()));
+        const postPromises = postFiles.map(file => fetch(`blog-posts/${file}`).then(res => res.json()));
         const posts = await Promise.all(postPromises);
         return posts.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date, newest first
     } catch (error) {
